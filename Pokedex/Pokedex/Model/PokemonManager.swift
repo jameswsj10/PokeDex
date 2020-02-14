@@ -36,6 +36,11 @@ class PokemonManager {
         return "\(PokemonList[indexPath.item].id): \(PokemonList[indexPath.item].name)"
     }
     
+    static func getID(indexPath: IndexPath) -> String {
+        return String((PokemonList[indexPath.item].id))
+    }
+    
+    
     static func getPokemon(pokeIndex: Int) -> Pokemon {
         return PokemonList[pokeIndex]
     }

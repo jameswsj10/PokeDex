@@ -28,7 +28,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCell", for: indexPath) as! CollectionViewCell
         cell.pokemonImage.image = PokemonManager.getImage(indexPath: indexPath)
-        cell.pokemonName.text = PokemonManager.getTitle(indexPath: indexPath) // 001: Bulbasaur
+        let poke = PokemonManager.getPokemon(pokeIndex: indexPath.item)
+        cell.pokemonName.text = poke.name // 001: Bulbasaur
+        cell.pokemonID.text = "ID: \(poke.id)"
         cell.pokeInt = indexPath.item
         
         cell.layer.cornerRadius = 15

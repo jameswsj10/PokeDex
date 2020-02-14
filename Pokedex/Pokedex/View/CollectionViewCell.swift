@@ -12,6 +12,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var pokemonName: UILabel!
+    @IBOutlet weak var pokemonID: UILabel!
     var pokeInt: Int!
     
 }
