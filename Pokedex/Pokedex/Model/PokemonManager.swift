@@ -17,14 +17,18 @@ class PokemonManager {
         //yeet
     }
     
-    
     static func getImage(indexPath: IndexPath) -> UIImage {
         return getImage(indexPath: indexPath.item)
     }
     
     static func getImage(indexPath: Int) -> UIImage {
-        let url = URL(string: PokemonList[indexPath].imageUrl) ?? unknownImage
-        let data = try? Data(contentsOf: url!) // sometimes errors out?
+        let url = try? URL(string: PokemonList[indexPath].imageUrl) ?? unknownImage
+        let data = try? Data(contentsOf: url!)
+        return UIImage(data: data!)!
+    }
+    
+    static func getUnknownImage() -> UIImage {
+        let data = try? Data(contentsOf: PokemonManager.unknownImage!)
         return UIImage(data: data!)!
     }
     

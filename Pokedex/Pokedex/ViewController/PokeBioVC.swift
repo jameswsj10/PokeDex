@@ -22,7 +22,7 @@ class PokeBioVC: UIViewController {
     @IBOutlet weak var pokeSPD: UILabel!
     @IBOutlet weak var pokeDEF: UILabel!
     @IBOutlet weak var pokeSPEED: UILabel!
-    
+    @IBOutlet weak var pokeGIF: UIImageView!
     
     
     override func viewDidLoad() {
@@ -45,23 +45,17 @@ class PokeBioVC: UIViewController {
         pokeSPD.text = String(poke.specialDefense)
         pokeDEF.text = String(poke.defense)
         pokeSPEED.text = String(poke.speed)
-        
+        pokeGIF.image = loadGIF(poke: poke)
         // add more shit like stats and animated gif?????
     }
     
-//    func showPokemonBio() {
-//        PokemonTitle.text = "ID: \(currPokemon.id) \(currPokemon.name)"
-//
-//        let url = URL(string: currPokemon.gifUrl)
-//        let data = try? Data(contentsOf: url!) // need to fix when nil
-//        PokemonGIF.image = UIImage(data: data!)
-//
-//        PokemonDescription.text = "Type: \(currPokemon.types) Total Stats: \(currPokemon.total) HP: \(currPokemon.health) Attack: \(currPokemon.attack) Defense: \(currPokemon.defense) Sp_attack: \(currPokemon.specialAttack) Sp_defense: \(currPokemon.specialDefense) Speed: \(currPokemon.speed)"
-//    }
     
-//    func loadGIF() {
-//        let imageURL = UIImage.animatedImage(with: <#T##[UIImage]#>, duration: <#T##TimeInterval#>) // ASK FOR HELP
-//    }
+    func loadGIF(poke: Pokemon) -> UIImage {
+        let gifURL : String = poke.gifUrl
+        let unknownImage = PokemonManager.getUnknownImage()
+        let gifimage = UIImage.gifImageWithURL(gifURL) ?? unknownImage
+        return gifimage
+    }
     
     /*
     // MARK: - Navigation
