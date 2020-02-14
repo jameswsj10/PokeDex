@@ -35,11 +35,12 @@ class PokemonManager {
     static func getPokemon(pokeIndex: Int) -> Pokemon {
         return PokemonList[pokeIndex]
     }
-}
-
-
-
-class ToggleItems {
     
+    static func getPokemonTypes(_ IndexPath:Int) -> [String]{
+        var typeList: [String] = []
+        for type in PokemonList[IndexPath].types {
+            typeList.append(type.rawValue)
+        }
+        return typeList
+    }
 }
-
