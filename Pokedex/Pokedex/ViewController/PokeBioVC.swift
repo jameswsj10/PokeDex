@@ -11,20 +11,22 @@ import UIKit
 class PokeBioVC: UIViewController {
 
 //    var currPokemon: Pokemon = PokemonGenerator.getPokemonArray()[0] // setting as bulbasaur for testing purposes
-    var pokeIndex: Int? //get from prepare function from collectioncell
+    var PokeIndex: Int = 1 //get from prepare function from collectioncell
     var currPokemon: Pokemon?
     @IBOutlet weak var pokeImage: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showPokemonBio(pokeIndex: pokeIndex!)
+        print("This is what PokeIndex is on BioVC: \(PokeIndex)")
+        showPokemonBio(pokeIndex: PokeIndex)
         // Do any additional setup after loading the view.
     }
     
     func showPokemonBio(pokeIndex: Int) {
         currPokemon = PokemonManager.getPokemon(pokeIndex: pokeIndex)
         pokeImage.image = PokemonManager.getImage(indexPath: pokeIndex)
+        
     }
     
 //    func showPokemonBio() {

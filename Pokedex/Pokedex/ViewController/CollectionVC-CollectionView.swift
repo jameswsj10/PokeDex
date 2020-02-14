@@ -13,8 +13,13 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
 //    var SegRowCGSize = CGSize(width: 200, height: 200)
 //    var SegGridCGSize = CGSize(width: view.frame.width / 4, height: view.frame.width / 4)
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.PokeIndex = indexPath.item
+        performSegue(withIdentifier: "goToPokePage", sender: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print(view.frame.size)
+        //print(view.frame.size)
         return CGSize(width: view.frame.width/2, height: view.frame.width/2)
     }
 
@@ -41,4 +46,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pokeBio = segue.destination as? PokeBioVC, segue.identifier == "goToPokePage" {
+            pokeBio.PokeIndex = PokeIndex!
+        }
+    }
 }

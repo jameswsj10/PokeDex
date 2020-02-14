@@ -11,12 +11,13 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var toggleSwitch: UISegmentedControl!
-    @IBOutlet weak var collectionVieW: UICollectionView!
-
+    @IBOutlet weak var collectionView: UICollectionView!
+    var PokeIndex: Int? // to send to pokeBio view SET TO 3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        collectionView.delegate = self
     }
 }
 
