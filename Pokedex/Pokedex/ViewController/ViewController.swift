@@ -10,11 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var toggleSwitch: UISegmentedControl!
+    @IBOutlet weak var collectionVieW: UICollectionView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
-
-
 }
 
