@@ -36,11 +36,11 @@ class PokemonManager {
         return PokemonList[pokeIndex]
     }
     
-    static func getPokemonTypes(_ IndexPath:Int) -> [String]{
-        var typeList: [String] = []
+    static func getPokemonTypes(_ IndexPath:Int) -> String {
+        var typeString: String = ""
         for type in PokemonList[IndexPath].types {
-            typeList.append(type.rawValue)
+            typeString.append("\(type.rawValue) ")
         }
-        return typeList
+        return typeString
     }
 }

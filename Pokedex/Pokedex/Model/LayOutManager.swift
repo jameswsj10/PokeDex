@@ -14,19 +14,13 @@ class LayOutManager {
     
     
     static func toggleView(currState: Int) {
-        if currState == 0 {
-            print("row")
-            toggleState = 0
-        } else {
-            print("grid")
-            toggleState = 1
-        }
+        toggleState = currState
     }
     
     static func updateLayout() -> CGSize {
         switch toggleState {
         case 0:
-            return CGSize(width: 290, height: 290)
+            return CGSize(width: 290, height: 140)
         case 1:
             return CGSize(width: 140, height: 140)
         default:

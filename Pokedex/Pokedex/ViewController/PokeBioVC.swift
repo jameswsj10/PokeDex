@@ -10,10 +10,19 @@ import UIKit
 
 class PokeBioVC: UIViewController {
 
-//    var currPokemon: Pokemon = PokemonGenerator.getPokemonArray()[0] // setting as bulbasaur for testing purposes
-    var PokeIndex: Int = 1 //get from prepare function from collectioncell
-    var currPokemon: Pokemon?
-    @IBOutlet weak var pokeImage: UIImageView!
+    var PokeIndex: Int = 1
+    @IBOutlet weak var pokeName: UILabel!
+    @IBOutlet weak var pokeID: UILabel!
+    @IBOutlet weak var pokeImage: UIImageView! // didn't wanna erase this cuz i felt like it'd give back error if i do
+    @IBOutlet weak var pokeType: UILabel!
+    @IBOutlet weak var pokeTotal: UILabel!
+    @IBOutlet weak var pokeHP: UILabel!
+    @IBOutlet weak var pokeSPA: UILabel!
+    @IBOutlet weak var pokeATT: UILabel!
+    @IBOutlet weak var pokeSPD: UILabel!
+    @IBOutlet weak var pokeDEF: UILabel!
+    @IBOutlet weak var pokeSPEED: UILabel!
+    
     
     
     override func viewDidLoad() {
@@ -24,9 +33,20 @@ class PokeBioVC: UIViewController {
     }
     
     func showPokemonBio(pokeIndex: Int) {
-        currPokemon = PokemonManager.getPokemon(pokeIndex: pokeIndex)
+        let poke: Pokemon = PokemonManager.getPokemon(pokeIndex: pokeIndex)
+        pokeName.text = poke.name
+        pokeID.text = "ID: \(poke.id)"
         pokeImage.image = PokemonManager.getImage(indexPath: pokeIndex)
+        pokeType.text = "Type: \(PokemonManager.getPokemonTypes(pokeIndex))"
+        pokeTotal.text = String(poke.total)
+        pokeHP.text = String(poke.health)
+        pokeSPA.text = String(poke.specialAttack)
+        pokeATT.text = String(poke.attack)
+        pokeSPD.text = String(poke.specialDefense)
+        pokeDEF.text = String(poke.defense)
+        pokeSPEED.text = String(poke.speed)
         
+        // add more shit like stats and animated gif?????
     }
     
 //    func showPokemonBio() {
