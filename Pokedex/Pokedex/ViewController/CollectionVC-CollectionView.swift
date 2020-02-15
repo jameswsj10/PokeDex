@@ -55,3 +55,23 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         }
     }
 }
+
+extension ViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+    
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredPokemon = PokemonManager.PokemonList.filter({( pokemon : Pokemon) -> Bool in
+            return pokemon.name.lowercased().contains(searchText.lowercased())
+        })
+        
+        collectionView.reloadData()
+    }
+}
