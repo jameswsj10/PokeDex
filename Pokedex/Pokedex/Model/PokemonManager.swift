@@ -22,14 +22,21 @@ class PokemonManager {
     }
     
     static func getImage(indexPath: Int) -> UIImage {
-        let url = try? URL(string: PokemonList[indexPath].imageUrl) ?? unknownImage
-        let data = try? Data(contentsOf: url!)
-        return UIImage(data: data!)!
+        guard let url = try? URL(string: PokemonList[indexPath].imageUrl) else {
+            return getUnknownImage()
+        }
+        guard let data = try? Data(contentsOf: url) else {
+            return getUnknownImage()
+        }
+        return UIImage(data: data)!
+//        let url = try? URL(string: PokemonList[indexPath].imageUrl) ?? unknownImage
+//        let data = try? Data(contentsOf: url!)
+//        return UIImage(data: data!)!
     }
     
     static func getUnknownImage() -> UIImage {
-        let data = try? Data(contentsOf: PokemonManager.unknownImage!)
-        return UIImage(data: data!)!
+        let data = try! Data(contentsOf: PokemonManager.unknownImage!)
+        return UIImage(data: data)!
     }
     
     static func getTitle(indexPath: IndexPath) -> String {

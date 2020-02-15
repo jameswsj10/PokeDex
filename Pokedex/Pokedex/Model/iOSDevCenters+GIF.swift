@@ -39,8 +39,11 @@ extension UIImage {
                 print("image named \"\(gifUrl)\" doesn't exist")
                 return nil
         }
+        if bundleURL == nil {
+            return PokemonManager.getUnknownImage()
+        }
         guard let imageData = try? Data(contentsOf: bundleURL!) else {
-            print("image named \"\(gifUrl)\" into NSData")
+            print("error on retrieving valid URL's data")
             return nil
         }
         

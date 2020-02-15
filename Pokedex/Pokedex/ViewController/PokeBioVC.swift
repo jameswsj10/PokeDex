@@ -46,7 +46,7 @@ class PokeBioVC: UIViewController {
         pokeDEF.text = String(poke.defense)
         pokeSPEED.text = String(poke.speed)
         pokeGIF.image = loadGIF(poke: poke)
-        // add more shit like stats and animated gif?????
+        
     }
     
     

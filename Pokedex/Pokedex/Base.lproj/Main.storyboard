@@ -49,14 +49,14 @@
                                                     <rect key="frame" x="8" y="8" width="62" height="114"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeH-jb-DyQ">
-                                                    <rect key="frame" x="80" y="64" width="57" height="51"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0c-GU-iLw">
+                                                    <rect key="frame" x="93" y="24" width="31" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0c-GU-iLw">
-                                                    <rect key="frame" x="93" y="24" width="31" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeH-jb-DyQ">
+                                                    <rect key="frame" x="78" y="63" width="57" height="51"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -65,8 +65,8 @@
                                             <constraints>
                                                 <constraint firstItem="oeH-jb-DyQ" firstAttribute="top" secondItem="n0c-GU-iLw" secondAttribute="bottom" constant="20" id="Sym-Xq-dfB"/>
                                                 <constraint firstAttribute="bottom" secondItem="oeH-jb-DyQ" secondAttribute="bottom" constant="30" id="gbp-XZ-5Fp"/>
+                                                <constraint firstAttribute="trailing" secondItem="oeH-jb-DyQ" secondAttribute="trailing" constant="10" id="n9I-L5-jpK"/>
                                                 <constraint firstAttribute="trailing" secondItem="n0c-GU-iLw" secondAttribute="trailing" constant="34" id="wtp-hR-WD7"/>
-                                                <constraint firstAttribute="trailing" secondItem="oeH-jb-DyQ" secondAttribute="trailing" constant="8" id="xAG-EQ-G6S"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
