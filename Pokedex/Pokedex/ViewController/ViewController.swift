@@ -12,9 +12,10 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var toggleSwitch: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
-    var PokeIndex: Int? // to send to pokeBio view SET TO 3
+    var Pokemon2Send: Pokemon? // to send to pokeBio view
     let searchController = UISearchController(searchResultsController: nil)
     var filteredPokemon = [Pokemon]()
+    var currIndexPath: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,9 @@ class ViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Pokemon Name"
-        navigationItem.searchController = searchController
+        self.navigationItem.searchController = searchController
+        self.definesPresentationContext = true
+        self.searchController.isActive = true
         definesPresentationContext = true
     }
 }

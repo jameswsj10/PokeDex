@@ -10,7 +10,6 @@ import UIKit
 
 class PokeBioVC: UIViewController {
 
-    var PokeIndex: Int = 1
     @IBOutlet weak var pokeName: UILabel!
     @IBOutlet weak var pokeID: UILabel!
     @IBOutlet weak var pokeImage: UIImageView! // didn't wanna erase this cuz i felt like it'd give back error if i do
@@ -23,21 +22,22 @@ class PokeBioVC: UIViewController {
     @IBOutlet weak var pokeDEF: UILabel!
     @IBOutlet weak var pokeSPEED: UILabel!
     @IBOutlet weak var pokeGIF: UIImageView!
-    
+    var PokemonReceived: Pokemon?
+    var PokeList: [Pokemon]?
+    var indexpath: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("This is what PokeIndex is on BioVC: \(PokeIndex)")
-        showPokemonBio(pokeIndex: PokeIndex)
+        print("This is what PokeIndex is on BioVC: \(PokemonReceived!.id)")
+        showPokemonBio(poke: PokemonReceived!)
         // Do any additional setup after loading the view.
     }
     
-    func showPokemonBio(pokeIndex: Int) {
-        let poke: Pokemon = PokemonManager.getPokemon(pokeIndex: pokeIndex)
+    func showPokemonBio(poke: Pokemon) {
         pokeName.text = poke.name
         pokeID.text = "ID: \(poke.id)"
-        pokeImage.image = PokemonManager.getImage(indexPath: pokeIndex)
-        pokeType.text = "Type: \(PokemonManager.getPokemonTypes(pokeIndex))"
+        pokeImage.image = PokemonManager.getImage(pokeList: PokeList!, indexPath: indexpath!)
+        pokeType.text = "Type: \(PokemonManager.getPokemonTypes(pokeList: PokeList!, indexpath!))"
         pokeTotal.text = String(poke.total)
         pokeHP.text = String(poke.health)
         pokeSPA.text = String(poke.specialAttack)

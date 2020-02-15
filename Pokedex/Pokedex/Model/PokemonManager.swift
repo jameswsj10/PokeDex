@@ -17,6 +17,17 @@ class PokemonManager {
         //yeet
     }
     
+    // for calling on filtered pokelists
+    static func getImage(pokeList: [Pokemon], indexPath: Int) -> UIImage {
+    guard let url = try? URL(string: pokeList[indexPath].imageUrl) else {
+        return getUnknownImage()
+        }
+    guard let data = try? Data(contentsOf: url) else {
+        return getUnknownImage()
+        }
+    return UIImage(data: data)!
+    }
+    
     static func getImage(indexPath: IndexPath) -> UIImage {
         return getImage(indexPath: indexPath.item)
     }
@@ -52,9 +63,9 @@ class PokemonManager {
         return PokemonList[pokeIndex]
     }
     
-    static func getPokemonTypes(_ IndexPath:Int) -> String {
+    static func getPokemonTypes(pokeList: [Pokemon], _ IndexPath:Int) -> String {
         var typeString: String = ""
-        for type in PokemonList[IndexPath].types {
+        for type in pokeList[IndexPath].types {
             typeString.append("\(type.rawValue) ")
         }
         return typeString

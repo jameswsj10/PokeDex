@@ -12,7 +12,12 @@ import UIKit
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.PokeIndex = indexPath.item
+        if isFiltering {
+            self.Pokemon2Send = filteredPokemon[indexPath.item]
+        } else {
+            self.Pokemon2Send = PokemonManager.getPokemon(pokeIndex: indexPath.item)
+        }
+        self.currIndexPath = indexPath.item
         performSegue(withIdentifier: "goToPokePage", sender: self)
     }
     
@@ -22,16 +27,25 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isFiltering {
+          return filteredPokemon.count
+        }
         return PokemonManager.PokemonList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCell", for: indexPath) as! CollectionViewCell
-        cell.pokemonImage.image = PokemonManager.getImage(indexPath: indexPath)
-        let poke = PokemonManager.getPokemon(pokeIndex: indexPath.item)
+        let poke: Pokemon
+        if isFiltering {
+          poke = filteredPokemon[indexPath.item]
+          cell.pokemonImage.image = PokemonManager.getImage(pokeList: filteredPokemon, indexPath: indexPath.row)
+        } else {
+          poke = PokemonManager.getPokemon(pokeIndex: indexPath.item)
+          cell.pokemonImage.image = PokemonManager.getImage(indexPath: indexPath.row)
+        }
         cell.pokemonName.text = poke.name // 001: Bulbasaur
         cell.pokemonID.text = "ID: \(poke.id)"
-        cell.pokeInt = indexPath.item
+        cell.pokeInt = poke.id
         
         cell.layer.cornerRadius = 15
         cell.layer.shadowColor = UIColor.black.cgColor
@@ -51,13 +65,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pokeBio = segue.destination as? PokeBioVC, segue.identifier == "goToPokePage" {
-            pokeBio.PokeIndex = PokeIndex!
+            if isFiltering {
+                pokeBio.PokeList = filteredPokemon
+            } else {
+                pokeBio.PokeList = PokemonManager.PokemonList
+            }
+            pokeBio.indexpath = self.currIndexPath
+            pokeBio.PokemonReceived = Pokemon2Send!
         }
     }
 }
 
 extension ViewController: UISearchResultsUpdating {
-    
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         filterContentForSearchText(searchBar.text!)
@@ -73,5 +92,9 @@ extension ViewController: UISearchResultsUpdating {
         })
         
         collectionView.reloadData()
+    }
+    
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
     }
 }
