@@ -12,7 +12,7 @@ class PokeBioVC: UIViewController {
 
     @IBOutlet weak var pokeName: UILabel!
     @IBOutlet weak var pokeID: UILabel!
-    @IBOutlet weak var pokeImage: UIImageView! // didn't wanna erase this cuz i felt like it'd give back error if i do
+    @IBOutlet weak var pokeImage: UIImageView!
     @IBOutlet weak var pokeType: UILabel!
     @IBOutlet weak var pokeTotal: UILabel!
     @IBOutlet weak var pokeHP: UILabel!
@@ -28,7 +28,6 @@ class PokeBioVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("This is what PokeIndex is on BioVC: \(PokemonReceived!.id)")
         showPokemonBio(poke: PokemonReceived!)
         // Do any additional setup after loading the view.
     }
@@ -56,15 +55,5 @@ class PokeBioVC: UIViewController {
         let gifimage = UIImage.gifImageWithURL(gifURL) ?? unknownImage
         return gifimage
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

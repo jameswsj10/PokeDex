@@ -70,4 +70,13 @@ class PokemonManager {
         }
         return typeString
     }
+    
+    static func getPokemonTypesL(pokeList: [Pokemon], _ IndexPath:Int) -> [String] {
+        var typeList: [String] = []
+        for type in pokeList[IndexPath].types {
+            typeList.append("\(type.rawValue) ")
+        }
+        return typeList
+    }
+    
 }

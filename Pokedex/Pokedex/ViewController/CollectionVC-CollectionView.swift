@@ -22,7 +22,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //print(view.frame.size)
         LayOutManager.updateLayout()
     }
 
@@ -95,6 +94,6 @@ extension ViewController: UISearchResultsUpdating {
     }
     
     var isFiltering: Bool {
-      return searchController.isActive && !isSearchBarEmpty
+        return (searchController.isActive && !isSearchBarEmpty) || (self.typeFiltered && self.filterContentExists)
     }
 }
